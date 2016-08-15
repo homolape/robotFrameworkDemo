@@ -1,0 +1,38 @@
+*** Settings ***
+
+Library           Selenium2Library
+
+*** Variables ***
+
+${BROWSER2}		Chrome
+${BROWSER}		IE
+${BROWSER1}		Firefox
+${URL_LOCATION}		http://www.google.com
+${DELAY_TIME}		1
+${searchText}		Homola 
+${searchField}		//*/input[@id="lst-ib"]
+${searchButton}		//*[@id="sblsbb"]/button
+
+
+*** Keywords ***
+
+Open Browser to google page
+	Open Browser		${URL_LOCATION}		${BROWSER}
+
+Maximize window
+	Maximize Browser Window
+
+Wait
+	Wait Until Element is Visible    ${searchField}    60s
+
+Input word
+    Input Text    ${searchField}    ${searchText}
+
+Click on
+    Click Element    ${searchButton}
+
+Close the browser
+	Close Browser
+
+Close browsers
+	Close All Browsers
